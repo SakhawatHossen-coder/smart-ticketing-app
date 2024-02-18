@@ -50,6 +50,11 @@ for (let btn of seatButtons) {
     document.querySelector("#grand-total-price").innerText = total;
 
     //discounted Price
+    ///
+
+    e.target.classList.toggle("clicked-btn");
+
+    ///
 
     //form
     const phoneNumber = document.querySelector("#phone-number");
@@ -62,7 +67,7 @@ for (let btn of seatButtons) {
       }
       console.log(e.target.value > 0);
     });
-    nextBtn.value = "";
+    phoneNumber.value = "";
     //     console.log(phoneNumber.value.length > 0);
   });
 }
@@ -80,3 +85,41 @@ document.querySelector("#next-btn").addEventListener("click", function () {
   document.querySelector("nav").classList.add("hidden");
 });
 //
+
+//discount Button
+// show {}
+const applyInput = document.querySelector("#apply-input");
+const discountBtn = document.querySelector("#apply-btn");
+const discountInput = document.querySelector("#discount-input");
+let DISCOUNT = 0;
+applyInput.addEventListener("keyup", function (e) {
+  if (e.target.value === "NEW15") {
+    DISCOUNT = total * 0.15;
+discountBtn.addEventListener("click", function () {
+     document.querySelector("#grand-total-price").innerText = total - DISCOUNT;
+})
+
+    discountBtn.classList.remove("btn-disabled");
+    
+  } else if (e.target.value === "Couple 20") {
+    DISCOUNT = total * 0.2;
+    discountBtn.addEventListener("click", function () {
+         document.querySelector("#grand-total-price").innerText = total - DISCOUNT;
+    })
+    discountBtn.classList.remove("btn-disabled");
+  } else {
+    discountBtn.classList.add("btn-disabled");
+  }
+  //btn
+});
+let totalDis = 0;
+discountBtn.addEventListener("click", function () {
+  const discountDiv = document.querySelector("#discount-div");
+
+  discountDiv.innerHTML = `
+<h1>Discounted Price</h1>
+<h1>BDT-${DISCOUNT}</h1>
+`;
+
+  discountInput.classList.add("hidden");
+});
