@@ -21,7 +21,7 @@ for (let btn of seatButtons) {
     //     console.log(indicatorValue++);
     //seat- update
     const seatUpdate = document.querySelector(".seat-update");
-   
+
     appendParagraph(seatNumber, e.target.innerText);
     appendParagraph(seatClass, "Economy");
     appendParagraph(seatPrice, "550");
@@ -50,6 +50,20 @@ for (let btn of seatButtons) {
     document.querySelector("#grand-total-price").innerText = total;
 
     //discounted Price
+
+    //form
+    const phoneNumber = document.querySelector("#phone-number");
+    const nextBtn = document.querySelector("#next-btn");
+    phoneNumber.addEventListener("keyup", (e) => {
+      if (e.target.value > 0) {
+        nextBtn.classList.remove("btn-disabled");
+      } else {
+        nextBtn.classList.add("btn-disabled");
+      }
+      console.log(e.target.value > 0);
+    });
+    nextBtn.value = "";
+    //     console.log(phoneNumber.value.length > 0);
   });
 }
 
@@ -59,3 +73,10 @@ function appendParagraph(mainElement, text) {
   p.innerText = text;
   mainElement.appendChild(p);
 }
+
+document.querySelector("#next-btn").addEventListener("click", function () {
+  document.querySelector("footer").classList.remove("hidden");
+  document.querySelector("main").classList.add("hidden");
+  document.querySelector("nav").classList.add("hidden");
+});
+//
