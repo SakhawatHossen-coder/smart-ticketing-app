@@ -1,9 +1,29 @@
 const seatButtons = document.querySelectorAll(".btn-seat");
 let count = 0;
 let total = 0;
+let btnCount = 0;
 
 for (let btn of seatButtons) {
   btn.addEventListener("click", function (e) {
+    e.target.classList.toggle("clicked-btn");
+    if (e.target.classList.contains("clicked-btn")) {
+      console.log(btnCount++);
+    } else {
+      btnCount--;
+    }
+    if (btnCount >= 4) {
+      for (let btn of seatButtons) {
+        if (!btn.classList.contains("clicked-btn")) {
+          btn.disabled = true;
+        }
+      }
+    } else {
+      for (let btn of seatButtons) {
+        btn.disabled = false;
+      }
+    }
+
+
     //     console.log("btn clicked");
     let indicator = document.querySelector("#indicator");
     let seatNumber = document.querySelector("#seat-number");
@@ -32,27 +52,15 @@ for (let btn of seatButtons) {
 
     //     e.target.classList.toggle("btn-disabled");
 
-    //Price update
-    //     let totalPrice = parseInt(document.querySelector("#total-price").innerText);
-    // //     console.log(totalPrice)
-    //    let totalPriceValue = parseInt(seatPrice.innerText);
-    //     console.log(totalPriceValue);
     let totalPrice = parseInt(document.querySelector("#total-price").innerText);
     console.log(totalPrice);
     total = totalPrice + parseInt(550);
     document.querySelector("#total-price").innerText = total;
-    //     console.log(parseInt(p3.innerText));
-    //     let totalPriceCost = total + parseInt(p3.innerText);
-    //     console.log(totalPriceCost)
-    //     totalPrice.innerText = totalPriceCost++;
 
     //grand total;
     document.querySelector("#grand-total-price").innerText = total;
 
-    //discounted Price
     ///
-
-    e.target.classList.toggle("clicked-btn");
 
     ///
 
@@ -95,17 +103,16 @@ let DISCOUNT = 0;
 applyInput.addEventListener("keyup", function (e) {
   if (e.target.value === "NEW15") {
     DISCOUNT = total * 0.15;
-discountBtn.addEventListener("click", function () {
-     document.querySelector("#grand-total-price").innerText = total - DISCOUNT;
-})
+    discountBtn.addEventListener("click", function () {
+      document.querySelector("#grand-total-price").innerText = total - DISCOUNT;
+    });
 
     discountBtn.classList.remove("btn-disabled");
-    
   } else if (e.target.value === "Couple 20") {
     DISCOUNT = total * 0.2;
     discountBtn.addEventListener("click", function () {
-         document.querySelector("#grand-total-price").innerText = total - DISCOUNT;
-    })
+      document.querySelector("#grand-total-price").innerText = total - DISCOUNT;
+    });
     discountBtn.classList.remove("btn-disabled");
   } else {
     discountBtn.classList.add("btn-disabled");
