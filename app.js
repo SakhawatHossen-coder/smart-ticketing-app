@@ -1,5 +1,6 @@
 const seatButtons = document.querySelectorAll(".btn-seat");
 let count = 0;
+let total = 0;
 
 for (let btn of seatButtons) {
   btn.addEventListener("click", function (e) {
@@ -30,6 +31,21 @@ for (let btn of seatButtons) {
     p3.innerText = "550";
     seatPrice.appendChild(p3);
     console.log(e.target.style);
-    e.target.classList.add("bg-green-500");
+    e.target.classList.toggle("bg-green-500");
+    //     e.target.classList.toggle("btn-disabled");
+
+    //Proce update
+    //     let totalPrice = parseInt(document.querySelector("#total-price").innerText);
+    // //     console.log(totalPrice)
+    //    let totalPriceValue = parseInt(seatPrice.innerText);
+    //     console.log(totalPriceValue);
+    let totalPrice = parseInt(document.querySelector("#total-price").innerText);
+    console.log(totalPrice);
+    total = totalPrice + parseInt(p3.innerText);
+    document.querySelector("#total-price").innerText = total;
+    //     console.log(parseInt(p3.innerText));
+    //     let totalPriceCost = total + parseInt(p3.innerText);
+    //     console.log(totalPriceCost)
+    //     totalPrice.innerText = totalPriceCost++;
   });
 }
