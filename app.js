@@ -7,7 +7,7 @@ for (let btn of seatButtons) {
   btn.addEventListener("click", function (e) {
     e.target.classList.toggle("clicked-btn");
     if (e.target.classList.contains("clicked-btn")) {
-      console.log(btnCount++);
+      btnCount++;
     } else {
       btnCount--;
     }
@@ -22,7 +22,6 @@ for (let btn of seatButtons) {
         btn.disabled = false;
       }
     }
-
 
     //     console.log("btn clicked");
     let indicator = document.querySelector("#indicator");
@@ -101,14 +100,14 @@ const discountBtn = document.querySelector("#apply-btn");
 const discountInput = document.querySelector("#discount-input");
 let DISCOUNT = 0;
 applyInput.addEventListener("keyup", function (e) {
-  if (e.target.value === "NEW15") {
+  if (e.target.value === "NEW15" && btnCount >= 4) {
     DISCOUNT = total * 0.15;
     discountBtn.addEventListener("click", function () {
       document.querySelector("#grand-total-price").innerText = total - DISCOUNT;
     });
 
     discountBtn.classList.remove("btn-disabled");
-  } else if (e.target.value === "Couple 20") {
+  } else if (e.target.value === "Couple 20" && btnCount >= 4) {
     DISCOUNT = total * 0.2;
     discountBtn.addEventListener("click", function () {
       document.querySelector("#grand-total-price").innerText = total - DISCOUNT;
