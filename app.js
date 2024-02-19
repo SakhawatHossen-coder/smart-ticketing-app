@@ -76,6 +76,7 @@ for (let btn of seatButtons) {
     });
     phoneNumber.value = "";
     //     console.log(phoneNumber.value.length > 0);
+    applyInput.value = "";
   });
 }
 
@@ -90,6 +91,7 @@ document.querySelector("#next-btn").addEventListener("click", function () {
   document.querySelector("footer").classList.remove("hidden");
   document.querySelector("main").classList.add("hidden");
   document.querySelector("nav").classList.add("hidden");
+  document.querySelector(".last-f").classList.add("hidden");
 });
 //
 
@@ -124,7 +126,7 @@ discountBtn.addEventListener("click", function () {
 
   discountDiv.innerHTML = `
 <h1>Discounted Price</h1>
-<h1>BDT-${DISCOUNT}</h1>
+<h1>BDT- ${DISCOUNT}</h1>
 `;
 
   discountInput.classList.add("hidden");
