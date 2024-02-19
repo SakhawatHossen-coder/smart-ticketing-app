@@ -33,11 +33,8 @@ for (let btn of seatButtons) {
       parseInt(document.querySelector("#seat-count").innerText) - 1;
     document.querySelector("#seat-count").innerText = seatRemain;
     console.log(seatRemain);
-    //     let indicatorValue = parseInt(indicator);
     count += 1;
-    //     console.log(indicatorValue);
     indicator.innerText = count;
-    //     console.log(indicatorValue++);
     //seat- update
     const seatUpdate = document.querySelector(".seat-update");
 
@@ -59,10 +56,6 @@ for (let btn of seatButtons) {
     //grand total;
     document.querySelector("#grand-total-price").innerText = total;
 
-    ///
-
-    ///
-
     //form
     const phoneNumber = document.querySelector("#phone-number");
     const nextBtn = document.querySelector("#next-btn");
@@ -75,7 +68,6 @@ for (let btn of seatButtons) {
       console.log(e.target.value > 0);
     });
     phoneNumber.value = "";
-    //     console.log(phoneNumber.value.length > 0);
     applyInput.value = "";
   });
 }
@@ -130,4 +122,8 @@ discountBtn.addEventListener("click", function () {
 `;
 
   discountInput.classList.add("hidden");
+});
+
+document.querySelector("#btn-continue").addEventListener("click", function () {
+  location.reload();
 });
